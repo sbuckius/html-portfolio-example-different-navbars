@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href='https://fonts.googleapis.com/css?family=Abel' rel='stylesheet'>
+<title>Centered Navbar, Image & Video with Slideshow</title>
+<style>
+  /* --- Background Slideshow --- */
+  body, html {
+    margin: 0;
+    height: 100%;
+    color: white;
+    overflow: hidden;
+  }
+
+  .slideshow {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fade 20s infinite;
+  }
+  .slide:nth-child(1) { animation-delay: 0s; }
+  .slide:nth-child(2) { animation-delay: 5s; }
+  .slide:nth-child(3) { animation-delay: 10s; }
+  .slide:nth-child(4) { animation-delay: 15s; }
+
+  @keyframes fade {
+    0%, 100% { opacity: 0; }
+    10%, 25% { opacity: 1; }
+  }
+
+  /* --- Navbar --- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  z-index: 10; /* <-- add this */
+
+}
+
+  nav a, nav summary {
+    color: white;
+    text-decoration: none;
+   font-family: 'Abel';
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  nav a:hover, nav summary:hover {
+    opacity: 0.8;
+  }
+  .home {
+    text-decoration: underline;
+    color: white;
+    font-family: 'Abel';font-size: 30px;
+    margin-bottom: 8px;
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+font-family: 'Abel';font-size: 18px;
+  }
+
+  /* Dropdown */
+  details {
+    position: relative;
+  }
+  summary::marker { display: none; }
+  .submenu {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    border-radius: 6px;
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+  }
+  .submenu a {
+    padding: 6px 14px;
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+font-family: 'Abel';font-size: 22px;
+  }
+  .submenu a:hover {
+    background: rgba(255,255,255,0.2);
+  }
+
+  /* --- Centered Content --- */
+.content {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: row; /* ← change from column */
+  flex-wrap: wrap;     /* so they stack nicely on small screens */
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+  .content img {
+    max-width: 400px;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+  .content video {
+    max-width: 600px;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+
+  @media (max-width: 600px) {
+    .content img, .content video {
+      width: 95%;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Background slideshow -->
+<div class="slideshow">
+  <div class="slide" style="background-image:url('images/M02_glitch_1.png');"></div>
+  <div class="slide" style="background-image:url('images/M02_glitch_2.png');"></div>
+  <div class="slide" style="background-image:url('images/M02_glitch_3.png');"></div>
+  <div class="slide" style="background-image:url('images/M02_glitch_1.png');"></div>
+</div>
+
+<!-- Navbar -->
+<nav>
+  <a href="index.html" class="home">Sarah Buckius</a>
+    <div class="links">
+      <a href="about.html">About</a>
+       <details>
+       <summary>2D Artwork</summary>
+    <div class="submenu">
+      <a href="meme_mashup.html">MEME Mashup</a>
+      <a href="glitch.html">Glitch</a>
+      <a href="3d.html">3D</a>
+      <a href="net_art.html">Net Art</a>
+    </div>
+  </details>
+<details>
+ <summary>3D Artwork</summary>
+      <div class="submenu">
+      <a href="meme_mashup.html">MEME Mashup</a>
+      <a href="glitch.html">Glitch</a>
+      <a href="3d.html">3D</a>
+      <a href="net_art.html">Net Art</a>
+    </div>
+  </details>
+<details>
+ <summary>4D Artwork</summary>
+      <div class="submenu">
+      <a href="meme_mashup.html">MEME Mashup</a>
+      <a href="glitch.html">Glitch</a>
+      <a href="3d.html">3D</a>
+      <a href="net_art.html">Net Art</a>
+    </div>
+  </details>
+  <a href="about.html">About</a>
+  <a href="resume.html">Resume</a>
+  <a href="contact.html">Contact</a>
+  </div>
+</nav>
+
+<!-- Centered image and video -->
+<div class="content">
+  <img src="images/M04_3d_object.png" alt="Centered Example Image" />
+  <video src="videos/animation.mp4" autoplay muted loop playsinline></video>
+</div>
+
+</body>
+</html>
